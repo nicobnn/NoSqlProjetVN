@@ -10,7 +10,7 @@ import time
 def recupdonnees():
     params = {
             'access_key': '547d7636a660c07121e7200da3f50b89',
-            'query': 'New York',
+            'query': 'Paris',
             }
 
     api_result = requests.get('http://api.weatherstack.com/current', params)
