@@ -88,5 +88,5 @@ def foo():
 
 while True:
   foo()
-  time.sleep(20)
+  time.sleep(360)
 
