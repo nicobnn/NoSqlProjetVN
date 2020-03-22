@@ -31,11 +31,21 @@ def pushtoMongo():
             'access_key': '547d7636a660c07121e7200da3f50b89',
             'query': 'Sydney',
             }
+    params6 = {
+            'access_key': '547d7636a660c07121e7200da3f50b89',
+            'query': 'Lyon',
+            }
+    params7 = {
+            'access_key': '547d7636a660c07121e7200da3f50b89',
+            'query': 'Marseille',
+            }
     api_result = requests.get('http://api.weatherstack.com/current', params)
     api_result2 = requests.get('http://api.weatherstack.com/current', params2)
     api_result3 = requests.get('http://api.weatherstack.com/current', params3)
     api_result4 = requests.get('http://api.weatherstack.com/current', params4)
     api_result5 = requests.get('http://api.weatherstack.com/current', params5)
+    api_result6 = requests.get('http://api.weatherstack.com/current', params6)
+    api_result7 = requests.get('http://api.weatherstack.com/current', params7)
     '''
     #here we can print some values returned by the api
     print(u'Current meteo at %s is :' % (api_response['location']['name']))
@@ -52,13 +62,17 @@ def pushtoMongo():
     data3 = json.loads("[" + api_result3.text+"]")
     data4 = json.loads("[" + api_result4.text+"]")
     data5 = json.loads("[" + api_result5.text+"]")
-    print(data,data2,data3,data4,data5)
+    data6 = json.loads("[" + api_result6.text+"]")
+    data7 = json.loads("[" + api_result7.text+"]")
+    print(data6,data7)
     db = client.meteo
     paris = db.paris
     london = db.london
     new_york = db.new_york
     tokyo = db.tokyo
     sydney = db.sydney
+    lyon=db.lyon
+    marseille=db.marseille
     
     for x1 in data :
         paris.insert_one(x1)
@@ -74,6 +88,12 @@ def pushtoMongo():
     
     for x5 in data5 :
         sydney.insert_one(x5)
+        
+    for x6 in data6 :
+        lyon.insert_one(x6)
+        
+    for x7 in data7 :
+        marseille.insert_one(x7)
            
     client.close()
     
