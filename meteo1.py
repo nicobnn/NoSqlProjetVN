@@ -10,7 +10,8 @@ from pymongo import MongoClient
 
 def pushtoMongo():
     
-    
+    #la clé utilisé ici est une clé api générée depuis une compte gratuit sur weatherstack
+    #https://weatherstack.com/product
     params = {
             'access_key': '547d7636a660c07121e7200da3f50b89',
             'query': 'Paris',
